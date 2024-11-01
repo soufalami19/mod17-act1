@@ -53,8 +53,10 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {  
                     script {  
-                    def scannerHome = tool 'SonarQube Scanner' type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                    ef scannerHome = tool name: 'SonarQube Scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+            withSonarQubeEnv('SonarQube') {
                 sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=mod17-act1 -Dsonar.sources=."
+            }
             }
                     
                 }
