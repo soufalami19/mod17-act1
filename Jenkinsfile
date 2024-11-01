@@ -50,18 +50,18 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('SonarQube') {  
-                    sh """
-                        sonar-scanner \
-                        -Dsonar.projectKey=mod17-act1 \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=$SONARQUBE_TOKEN
-                    """
-                }
-            }
-        }
+            steps {
+                withSonarQubeEnv('SonarQube') {  
+                    sh """
+                        sonar-scanner \
+                        -Dsonar.projectKey=mod17-act1 \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=http://localhost:9000 \
+                        -Dsonar.login=$SONARQUBE_TOKEN
+                        """
+                }
+            }
+        }
 
 
         stage('Push to DockerHub') {
