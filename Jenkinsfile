@@ -23,6 +23,7 @@ pipeline {
                 script {
                     if (env.DOCKERHUB_CREDENTIALS_USR && env.DOCKERHUB_CREDENTIALS_PSW) {
                         echo "DockerHub credentials found: Username - ${env.DOCKERHUB_CREDENTIALS_USR}"
+                        echo "DockerHub credentials found: Password - ${env.DOCKERHUB_CREDENTIALS_PSW}"
                     } else {
                         error("DockerHub credentials not found or invalid.")
                     }
