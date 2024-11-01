@@ -52,11 +52,11 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {  
-                    sh '''
-                    sonar-scanner \
-                   -Dsonar.projectKey=mod17-act1 
-                   -Dsonar.sources=. 
-                    '''
+                    script {  
+                    def scannerHome = tool 'SonarQube Scanner'
+                sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=mod17-act1 -Dsonar.sources=."
+            }
+                    
                 }
             }
         }
