@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', 'DOCKERHUB_CREDENTIALS') {
-                        docker.image("souf12/eoi-modulo17").push()
+                        docker.image("souf12/eoi-modulo17:latest").push()
                     }
                 }
             }
