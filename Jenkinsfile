@@ -14,7 +14,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/soufalami19/mod17-act1.git'  
+                git branch: 'main', url: 'https://github.com/soufalami19/mod17-act1.git'  
             }
         }
 
