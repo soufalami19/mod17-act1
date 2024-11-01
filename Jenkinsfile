@@ -53,14 +53,9 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {  
                     sh """
-                        docker run --rm \
-                        -v \$(pwd):/usr/src \
-                        -w /usr/src \
-                        sonarsource/sonar-scanner-cli \
                         sonar-scanner \
                         -Dsonar.projectKey=mod17-act1 \
                         -Dsonar.sources=. \
-                        -Dsonar.host.url=http://sonarqube:9000 \
                         -Dsonar.login=$SONARQUBE_TOKEN
                         """
                 }
