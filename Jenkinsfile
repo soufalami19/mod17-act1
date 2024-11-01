@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub')  // Credenciales de DockerHub
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')  
     }
 
     stages {
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('', 'DOCKERHUB_CREDENTIALS') {
-                        docker.image("souf12/eoi-modulo17:latest").push()
+                        docker.image("souf12/eoi-modulo17").push()
                     }
                 }
             }
