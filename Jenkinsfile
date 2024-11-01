@@ -29,7 +29,7 @@ pipeline {
         stage('Test Docker Image') {
             steps {
                 script {
-                    def container = docker.run("souf12/eoi-modulo17:latest")
+                    def container = docker.image("souf12/eoi-modulo17:latest")
                     container.stop()
                 }
             }
