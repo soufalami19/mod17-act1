@@ -60,7 +60,7 @@ pipeline {
                         sonar-scanner \
                         -Dsonar.projectKey=mod17-act1 \
                         -Dsonar.sources=. \
-                        -Dsonar.host.url=http://localhost:9000 \
+                        -Dsonar.host.url=http://sonarqube:9000 \
                         -Dsonar.login=$SONARQUBE_TOKEN
                         """
                 }
