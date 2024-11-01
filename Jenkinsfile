@@ -53,6 +53,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {  
                     sh '''
+                    sonar-scanner \
                    -Dsonar.projectKey=mod17-act1 -Dsonar.sources=. 
                     '''
                 }
