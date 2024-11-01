@@ -52,9 +52,10 @@ pipeline {
             steps {
                 script {
                     echo "Attempting to push image to DockerHub"
-                    docker.withRegistry('https://index.docker.io/v1/', 'DOCKERHUB_CREDENTIALS') {
-                        docker.image("souf12/eoi-modulo17:latest").push()
-                    }
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    docker.image("souf12/eoi-modulo17:latest").push()
+                    sh 'docker logout'
+                    
                 }
             }
         }
