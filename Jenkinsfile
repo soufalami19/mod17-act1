@@ -57,7 +57,7 @@ pipeline {
                 // Ajoutez le curl de vérification
                 sh 'curl -I -u "sqa_7fc8f5d524f125628e18365ed7ffee9c21b53395:" http://sonarqube:9000/api/v2/analysis/jres?os=linux&arch=aarch64'
                 // Lancer l'analyse SonarQube
-                sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=mod17-act1 -Dsonar.sources=. -Dsonar.login=${env.SONARQUBE_TOKEN} -X"
+                sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=mod17-act1 -Dsonar.sources=. -Dsonar.login=sqa_7fc8f5d524f125628e18365ed7ffee9c21b53395 -X"
            
             }
         }
