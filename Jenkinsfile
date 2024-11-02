@@ -50,17 +50,17 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
-            steps { 
+            steps {
                 script {
                     def scannerHome = tool 'SonarQube Scanner' 
                     withSonarQubeEnv('SonarQube') { 
+                        // Modification pour utiliser le jeton avec curl
+                        sh 'curl -I -u "$SONARQUBE_TOKEN:" http://sonarqube:9000/api/v2/analysis/jres?os=linux&arch=aarch64'
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=mod17-act1 -Dsonar.sources=."
                     }
                 }
             }
-            }
-        
-
+        }
 
         stage('Push to DockerHub') {
             steps {
@@ -69,7 +69,6 @@ pipeline {
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                     docker.image("souf12/eoi-modulo17:latest").push()
                     sh 'docker logout'
-                    
                 }
             }
         }
